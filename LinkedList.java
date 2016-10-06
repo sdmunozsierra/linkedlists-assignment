@@ -110,6 +110,16 @@ public class LinkedList {
 	 * Print width, height, length, and this linked list in reverse order.
 	 */
 	void printReverse() {
+		//FIX
+	//public static iNode copyList(iNode n){	//returns a list with the elements in reverse order
+		iNode newList = null;				//call twice to achieve same list content **
+		while(n != null){
+			newList = new iNode(n.item,newList);
+			n = n.next;
+		}//end while
+		return newList;
+	}//end copyList method
+		//END FIX
 	}
 
 	/** Initiate the iterator variable */
