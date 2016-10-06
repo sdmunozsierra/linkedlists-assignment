@@ -1,4 +1,4 @@
-package lab4_linkedlists;
+package lab4_linked;
 
 public class Box {
 
@@ -50,7 +50,7 @@ public class Box {
 
 	//Print Box
 	void printBox(){
-		System.out.println("L-> "+length);
+		System.out.println("Box VOL-> "+(length) );
 	}
 	
 	// Get volume method
