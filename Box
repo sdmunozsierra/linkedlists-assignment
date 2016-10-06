@@ -1,0 +1,70 @@
+package lab4_linkedlists;
+
+public class Box {
+
+	private double length;
+	private double width;
+	private double height;
+	private double vol;
+
+	public Box next; // next
+	
+	//Constructor 1 
+	Box(double l, double w, double h) {
+
+		length = l;
+		width = w;
+		height = h;
+		vol = l * w * h;
+	}
+
+	
+	
+	//Constructor 2 (With volume parameter)
+	Box(double l, double w, double h, double v) {
+
+		length = l;
+		width = w;
+		height = h;
+		vol = v; //This could parse an error.
+	}
+
+	// Getters
+	// Get length
+	double getL() {
+
+		return this.length;
+	}
+
+	// Get Width
+	double getW() {
+
+		return this.width;
+	}
+
+	// Get Height
+	double getH() {
+
+		return this.height;
+	}
+
+	//Print Box
+	void printBox(){
+		System.out.println("L-> "+length);
+	}
+	
+	// Get volume method
+	double getVolume() {
+
+		return vol;
+	}
+
+	// Is cube method
+	boolean isCube() {
+
+		if (length == width && width == height)
+			return true;
+		return false;
+	}
+
+}// end class
