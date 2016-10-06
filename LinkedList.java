@@ -1,19 +1,17 @@
-package lab4_linkedlists;
+package lab4_miguel;
 
 public class LinkedList {
 	private Box head;
 	private Box iterator;
 	private int size;
 
+	/* Constructor [DONE] */
 	LinkedList() {
 		size = 0;
 		head = null;
-		//iterator = null;
 	}
 
-	/*
-	 * is empty?
-	 */
+	/* Is empty?  [EXTRA METHOD] */
 	public boolean isEmpty() {
 		//or if size = 0;
 		if (head == null)
@@ -31,7 +29,7 @@ public class LinkedList {
 
 	}
 	
-	/* Add b as the LAST node of the linked list. */
+	/* Add b as the LAST node of the linked list. [DONE]*/
 	void addNode(Box b) {
 		if (isEmpty())
 			addNodeFront(b);
@@ -52,12 +50,13 @@ public class LinkedList {
 			return false;
 		else{
 			Box temp = head; //create an empty box 'placeholder'
+			Box prev = temp;
 			while(pos>0){
 				temp = temp.next;
 				pos--;
 			}
-			temp.next = b;
-			b.next = temp.next;
+			prev.next = b;
+			b.next = temp;
 			size++;
 		}
 		return true;
@@ -66,10 +65,11 @@ public class LinkedList {
 	int getSize() {
 		return size;
 	}
+	
 
 	/**
 	 * Print width, height, length, and volume of each of the boxes in this
-	 * linked list.
+	 * linked list. [DONE]
 	 */
 	void printAllBoxes() {
 		Box temp = head;
@@ -84,15 +84,29 @@ public class LinkedList {
 		}
 	}
 
-	// volume of each of the boxes in
-	/**
+	/** [DONE]
 	 * Remove the box in position pos. is successful, otherwise return false.
 	 */
 	boolean removeNode(int pos) {
-		return false;
+		if (pos < 0 || pos > getSize()) 
+			return false;
+		else{
+			Box temp = head; //create an empty box 'placeholder'
+			Box prev = null;
+			while(pos>0){
+				prev = temp;
+				temp = temp.next;
+				pos--;
+			}
+			prev.next = temp.next;
+			size--;
+		}
+		return true;
 	}
 
-	/** Return the box in position pos. * invalid. */
+	/** 
+	 * Return the box in position pos. Return null when pos is invalid.
+	 */
 	Box getBox(int pos) {
 		Box temp = head;
 		while(pos>0){
@@ -100,57 +114,52 @@ public class LinkedList {
 			temp = temp.next;
 		}
 		return temp;
+		
+		//IF POSITION INVALID RETURN NULL [Missing]
+		
 	}
 
-	/**
+	/** 
 	 * Print width, height, length, and this linked list in reverse order.
 	 */
 	void printReverse() {
-		//FIX
-		LinkedList newList = new LinkedList();
+		LinkedList newL = new LinkedList();
 		Box temp = head;
-		int i = 0;
-		while(temp != null){
-			newList.addNode(temp);
-			System.out.println("ADDED "+i);
+		while (temp != null) {
+			newL.addNode(temp);
 			temp = temp.next;
-		}//end while
-		
-		Box it = newList.head;
-		while(it != null){
-			it.printBox();
-			it = it.next;
 		}
-	}
-
-	/** Initiate the iterator variable */
-	void initiateIterator() {
-//		iterate = 
+		newL.printAllBoxes();
 		
-//		this.iterator = new Iterator(){
-//
-//			@Override
-//			public boolean hasNext() {
-//				// TODO Auto-generated method stub
-//				return false;
-//			}
-//
-//			@Override
-//			public Box next() {
-//				// TODO Auto-generated method stub
-//				return null;
-//			}
-//			
-//		};
 	}
 
-	/* Return the box in the current iterator position. */
+	/** Initiate the iterator variable [DONE]*/
+	void initiateIterator() {
+		this.iterator = head;
+	}
+
+	/* Return the box in the current iterator position. [DONE]*/
 	Box getNextBox() {
-		Box temp = head;
-		if(temp.next != null){
-			return temp.next;
-		};
-		return null;
+		Box returnable;
+		//Return first element
+		if(iterator == head){
+			//System.out.println("BASE");
+			returnable = iterator; //save value
+			iterator = iterator.next; //adv to next
+			return returnable;
+		}
+		//Not the first element
+		else{
+			//Last element
+			if(iterator == null){
+				return null;
+			}
+			//Middle element
+			//System.out.println("MIDDLE");
+			returnable = iterator; //save value
+			iterator = iterator.next;
+			return returnable;
+		}//end else
 	}
 
 }
