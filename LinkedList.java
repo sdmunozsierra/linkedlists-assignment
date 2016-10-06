@@ -1,7 +1,5 @@
 package lab4_linkedlists;
 
-import java.util.Iterator;
-
 public class LinkedList {
 	private Box head;
 	private Box iterator;
@@ -44,7 +42,6 @@ public class LinkedList {
 			temp.next = b;
 		}
 		size++;
-
 	}
 
 	/* Insert b in position pos. If insertion is successful * return true,
@@ -63,7 +60,7 @@ public class LinkedList {
 			b.next = temp.next;
 			size++;
 		}
-		return false;
+		return true;
 	}
 
 	int getSize() {
@@ -105,21 +102,25 @@ public class LinkedList {
 		return temp;
 	}
 
-	// Return null when pos is
 	/**
 	 * Print width, height, length, and this linked list in reverse order.
 	 */
 	void printReverse() {
 		//FIX
-	//public static iNode copyList(iNode n){	//returns a list with the elements in reverse order
-		iNode newList = null;				//call twice to achieve same list content **
-		while(n != null){
-			newList = new iNode(n.item,newList);
-			n = n.next;
+		LinkedList newList = new LinkedList();
+		Box temp = head;
+		int i = 0;
+		while(temp != null){
+			newList.addNode(temp);
+			System.out.println("ADDED "+i);
+			temp = temp.next;
 		}//end while
-		return newList;
-	}//end copyList method
-		//END FIX
+		
+		Box it = newList.head;
+		while(it != null){
+			it.printBox();
+			it = it.next;
+		}
 	}
 
 	/** Initiate the iterator variable */
@@ -149,7 +150,7 @@ public class LinkedList {
 		if(temp.next != null){
 			return temp.next;
 		};
-		return temp;
+		return null;
 	}
 
 }
