@@ -1,4 +1,4 @@
-package lab4_linked;
+package lab4_miguel;
 
 public class Box {
 
@@ -51,6 +51,17 @@ public class Box {
 	//Print Box
 	void printBox(){
 		System.out.println("Box VOL-> "+(length) );
+	}
+	
+	//Print the current box properties
+	void printBoxProperties(int pos){
+		
+		System.out.println("BOX has the following attributes: ");
+		System.out.println("Position "+pos);
+		System.out.println("Width: " + width);
+		System.out.println("Height: " + height);
+		System.out.println("Lenght: " + length);
+		System.out.println(); // Blank Line for good better format
 	}
 	
 	// Get volume method
